@@ -22,7 +22,7 @@ jobs:
         run: docker login -u ievinan -p ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build Quarkus App
-        run: ./mvnw package -DskipTests
+        run: sudo ./mvnw package -DskipTests
 
       - name: Build and Push Docker Image
         run: |
