@@ -21,6 +21,9 @@ jobs:
       - name: Login to Docker Hub
         run: docker login -u ievinan -p ${{ secrets.DOCKER_PASSWORD }}
 
+      - name: Build Quarkus App
+        run: ./mvnw package -DskipTests
+
       - name: Build and Push Docker Image
         run: |
           docker build -f src/main/docker/Dockerfile.jvm -t ievinan/${{ env.REPO_NAME }}:${{ github.ref_name }} .
