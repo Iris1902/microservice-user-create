@@ -21,6 +21,12 @@ jobs:
       - name: Login to Docker Hub
         run: docker login -u ievinan -p ${{ secrets.DOCKER_PASSWORD }}
 
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
       - name: Build Quarkus App
         run: chmod +x ./mvnw && ./mvnw package -DskipTests
 
