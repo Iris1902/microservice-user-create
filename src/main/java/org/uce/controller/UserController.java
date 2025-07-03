@@ -28,9 +28,8 @@ public class UserController {
         user.fullName = request.fullName;
         user.phoneNumber = request.phoneNumber;
         user.address = request.address;
+        user.passwordHash = request.password;
 
-        // Simulación de hash, reemplaza luego con BCrypt o Argon2
-        user.passwordHash = "HASH(" + request.password + ")";
 
         try {
             user.role = User.Role.valueOf(request.role.toUpperCase());
