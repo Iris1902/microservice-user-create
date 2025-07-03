@@ -42,4 +42,16 @@ public class UserController {
 
         return Response.status(Response.Status.CREATED).entity(user).build();
     }
+
+    @GET
+    @Path("/{health}")
+    public Response healthCheck(@PathParam("health") String health) {
+        if ("health".equals(health)) {
+            return Response.ok("Service is healthy").build();
+        } else {
+            return Response.status(Response.Status.NOT_FOUND)
+                           .entity("Endpoint not found").build();
+        }
+    }
+
 }
